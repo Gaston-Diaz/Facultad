@@ -24,11 +24,16 @@ public class Hotel {
         }
     }
     
-    public void agregarCliente(int unaHabitacion, Persona unCliente){
-        if(habitaciones[unaHabitacion].ocupada == false){
+    public String agregarCliente(int unaHabitacion, Persona unCliente){
+        String aux;
+        if(!habitaciones[unaHabitacion].estaOcupada()){
              habitaciones[unaHabitacion].setCliente(unCliente);
              habitaciones[unaHabitacion].cambiarEstado();
+             aux = "cliente agregado";
+        }else{
+            aux = "no se puede agregar";
         }
+        return aux;
     }
     
     public String toString(int numero){

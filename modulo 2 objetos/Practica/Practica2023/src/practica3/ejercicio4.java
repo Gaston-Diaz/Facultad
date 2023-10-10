@@ -24,9 +24,11 @@ public class ejercicio4 {
         
         Persona p1 = new Persona(auxnombre,auxDni,auxEdad);
         
-        h.agregarCliente(2, p1);
+        System.out.println(h.agregarCliente(2, p1));
         
         System.out.println(h.toString(2));
+        
+        System.out.println(h.agregarCliente(2, p1));
         
         
         

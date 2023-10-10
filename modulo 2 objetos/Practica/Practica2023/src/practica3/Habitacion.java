@@ -50,11 +50,11 @@ public class Habitacion {
     @Override
     public String toString(){
         String aux;
-        if(ocupada == false){
-            aux = " costo: "+getCostoPorNoche() +" habitacion libre ";
+        if(estaOcupada()){
+            aux = " costo: "+getCostoPorNoche()+" habitacion ocupada " + " cliente: "+ getCliente().toString();
         }
         else{
-            aux = " costo: "+getCostoPorNoche()+" habitacion ocupada " + " cliente: "+ getCliente().toString();
+            aux = " costo: "+getCostoPorNoche() +" habitacion libre ";
         }
         return aux;
     }
