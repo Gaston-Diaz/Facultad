@@ -39,7 +39,6 @@ public class Hotel {
     public String toString(int numero){
         String aux;
         aux = "Habitacion: "+ numero+ habitaciones[numero].toString();
-       //aux = habitaciones[numero].estaOcupada();
         return aux;
     }
 }

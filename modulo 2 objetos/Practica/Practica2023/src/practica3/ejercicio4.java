@@ -29,9 +29,7 @@ public class ejercicio4 {
         System.out.println(h.toString(2));
         
         System.out.println(h.agregarCliente(2, p1));
-        
-        
-        
+         
     }
     
 }
