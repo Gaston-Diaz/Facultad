@@ -10,47 +10,53 @@ package practica3;
  * @author gasto
  */
 public class Estante {
-    private Libro [] libros = new Libro[20];
+    private int df;
+    private Libro[] libros;
     private int diml;
     
     //Constructor vacio
     public Estante(){
-        for(int i = 0; i < 20; i++){
+        df = 20;
+        libros = new Libro[df];
+        for(int i = 0; i < df; i++){
             libros[i] = null;
         }
         diml = 0;
     }
-    
+        public Estante(int unDf){
+        df = unDf;
+        libros = new Libro[df];
+        for(int i = 0; i < df; i++){
+            libros[i] = null;
+        }
+        diml = 0;
+    }
     public int cantidadLibros(){
         return diml;
     }
     public boolean estaLleno(){
-        return diml > libros.length;
+        return diml > df;
     }
     public void agregarLibro(Libro unLibro){
         if(!this.estaLleno()){
             libros[diml] = unLibro;
             diml++;
         }
+        
     }
-    public String buscarLibro(String unNombre){
-       /* String aux;
-        int i = 0;
-        while(i < diml && libros[i].getTitulo().equals(unNombre)){
-            i++;
+    public Autor buscarLibro(String unNombre){
+       boolean ok = false;  //para cortar si lo encontre
+       Autor a = null;     //para guardar el autor si lo encuentro
+       int i= 0;           //indice para avanzar en el vector
+       while((i < diml) && (!ok)){ //si no llegue al final y no encontre al autor
+           if (libros[i].getTitulo().equals(unNombre)) {//si es el autor
+                a =  libros[i].getPrimerAutor(); //guardo los datos del autor
+                ok = true;                  //cambio el estado el ok
+            }
+           else{
+               i++;//incremento el indice para avanzar
+           }
         }
-        if(i < diml){
-            aux = libros[i].toString();
-        }
-        else{
-            aux = "No se encontro el libro";
-        }
-        return aux;*/
-       for (int i = 0; i < diml; i++) {
-        if (libros[i].getTitulo().equals(unNombre)) {
-            return libros[i].toString();
-        }
-        }
-        return "No se encontró el libro";
+        return a;//retorno el autor o null si no lo encontre
         }
 }

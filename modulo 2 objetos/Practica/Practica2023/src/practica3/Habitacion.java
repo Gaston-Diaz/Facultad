@@ -29,6 +29,8 @@ public class Habitacion {
     public boolean estaOcupada() {
         return ocupada;
     }
+    
+    
     public void cambiarEstado(){
         ocupada = !ocupada;
     }
@@ -48,10 +50,13 @@ public class Habitacion {
     @Override
     public String toString(){
         String aux;
-        if(estaOcupada()){
-            return aux = "habitacion libre ";
+        if(ocupada == false){
+            aux = " costo: "+getCostoPorNoche() +" habitacion libre ";
         }
-        return aux = "habitacion ocupada " + " cliente: "+ getCliente().toString();
+        else{
+            aux = " costo: "+getCostoPorNoche()+" habitacion ocupada " + " cliente: "+ getCliente().toString();
+        }
+        return aux;
     }
     
 }

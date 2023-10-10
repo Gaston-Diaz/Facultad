@@ -7,7 +7,7 @@ package practica3;
 
 /**
  *
- * @author gasto
+ * @author gaston
  */
 public class Persona {
     String nombre;

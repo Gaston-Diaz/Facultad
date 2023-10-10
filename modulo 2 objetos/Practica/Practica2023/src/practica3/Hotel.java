@@ -10,12 +10,13 @@ package practica3;
  * @author gasto
  */
 public class Hotel {
-    int cantHabitaciones;
-    Habitacion[] habitaciones = new Habitacion[cantHabitaciones];
+    private int cantHabitaciones;
+    Habitacion[] habitaciones;
     
     //constructor
     public Hotel(int cant){
         cantHabitaciones = cant;
+        habitaciones = new Habitacion[cant];
         
         for(int i = 0; i < cantHabitaciones; i++){
             Habitacion h = new Habitacion();
@@ -24,6 +25,16 @@ public class Hotel {
     }
     
     public void agregarCliente(int unaHabitacion, Persona unCliente){
-        habitaciones[unaHabitacion].setCliente(unCliente);
+        if(habitaciones[unaHabitacion].ocupada == false){
+             habitaciones[unaHabitacion].setCliente(unCliente);
+             habitaciones[unaHabitacion].cambiarEstado();
+        }
+    }
+    
+    public String toString(int numero){
+        String aux;
+        aux = "Habitacion: "+ numero+ habitaciones[numero].toString();
+       //aux = habitaciones[numero].estaOcupada();
+        return aux;
     }
 }
