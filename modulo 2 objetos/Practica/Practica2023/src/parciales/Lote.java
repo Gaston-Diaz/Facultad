@@ -41,9 +41,9 @@ public class Lote {
     public String toString(){
         String aux;
         if(vendido()){
-            aux = " "+ getPrecio() + " " + getComprador().toString();
+            aux = " Precio: "+ getPrecio() + " " + getComprador().toString();
         }else{
-            aux = " "+ getPrecio() + "Disponible para la venta";
+            aux = " "+ getPrecio() + " Disponible para la venta";
         }
         return aux;
     }

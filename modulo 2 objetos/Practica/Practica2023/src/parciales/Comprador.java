@@ -10,7 +10,7 @@ package parciales;
  * @author gasto
  */
 public class Comprador {
-    //nombre,dni,apellido,ciudad
+    
     private int dni;
     private String nombre;
     private String apellido;
@@ -62,7 +62,7 @@ public class Comprador {
     @Override
     public String toString(){
         String aux;
-        aux = " "+getDni() + " " + getNombre() + " " + getApellido() + " " + getCiudad()+ " ";
+        aux = " Dni: "+getDni() + " Nombre: " + getNombre() + " Apellido: " + getApellido() + " Ciudad: " + getCiudad()+ " ";
         return aux;
     }
 }
