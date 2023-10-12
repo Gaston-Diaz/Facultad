@@ -28,4 +28,9 @@ public class Encargado extends Persona {
         this.cantEmpleados = cantEmpleados;
     }
     
+    @Override
+    public double sueldo(){
+        double aux = super.plusSueldo() + (getCantEmpleados()*1000);
+        return aux;
+    }
 }

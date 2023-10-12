@@ -46,4 +46,19 @@ public abstract class Persona {
         this.sueldoBasico = sueldoBasico;
     }
     
+    public boolean antiguedad(){
+        return 20 <= 2023 - getIngreso();
+    }
+    
+    public double plusSueldo(){
+        double aux;
+        if(antiguedad()){
+            aux = getSueldoBasico() *0.10;
+        }else{
+            aux = getSueldoBasico();
+        }
+        return aux;
+    }
+    
+    public abstract double sueldo();
 }

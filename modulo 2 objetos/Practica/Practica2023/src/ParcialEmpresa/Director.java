@@ -26,4 +26,10 @@ public class Director extends Persona{
         this.montoViaticos = montoViaticos;
     }
     
+    @Override
+    public double sueldo(){
+        double aux = super.plusSueldo() + getMontoViaticos();
+        return aux;
+    }
+    
 }
