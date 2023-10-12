@@ -65,6 +65,9 @@ public class Empresa {
     public void agregarEncargado(Encargado unEncargado, int pos){
         sucursales[pos] = unEncargado;
     }
+    public double mostrarSueldoDirector(){
+        return getDirector().sueldo();
+    }
     
     @Override
     public String toString(){
