@@ -12,12 +12,14 @@ package ParcialEmpresa;
 public abstract class Persona {
     private String nombre;
     private int Ingreso;
+    private int dni;
     private double sueldoBasico;
     
     //constructores
-    public Persona(String unNombre,int unAnio, double unSueldo){
+    public Persona(String unNombre,int unAnio,int unDni, double unSueldo){
         setNombre(unNombre);
         setIngreso(unAnio);
+        setDni(unDni);
         setSueldoBasico(unSueldo);
     } 
     //getter y setter
@@ -36,6 +38,14 @@ public abstract class Persona {
 
     public void setIngreso(int Ingreso) {
         this.Ingreso = Ingreso;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public double getSueldoBasico() {
@@ -60,5 +70,13 @@ public abstract class Persona {
         return aux;
     }
     
+    @Override
+    public String toString(){
+        String aux;
+        aux = " Nombre: "+getNombre()+" Dni: "+getDni();
+        return aux;
+    }
+    
     public abstract double sueldo();
+    
 }

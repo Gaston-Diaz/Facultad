@@ -13,8 +13,8 @@ public class Encargado extends Persona {
     private int cantEmpleados;
     
     //construtores
-    public Encargado(String unNombre,int unAnio,double unSueldo,int empleados){
-        super(unNombre,unAnio,unSueldo);
+    public Encargado(String unNombre,int unAnio,int unDni,double unSueldo,int empleados){
+        super(unNombre,unAnio,unDni,unSueldo);
         setCantEmpleados(empleados);
         
     }
@@ -26,6 +26,13 @@ public class Encargado extends Persona {
 
     public void setCantEmpleados(int cantEmpleados) {
         this.cantEmpleados = cantEmpleados;
+    }
+    
+    @Override
+    public String toString(){
+        String aux;
+        aux = super.toString() + " sueldo: "+ sueldo();
+        return aux;
     }
     
     @Override

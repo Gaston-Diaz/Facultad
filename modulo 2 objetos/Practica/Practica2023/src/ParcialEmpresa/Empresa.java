@@ -10,6 +10,7 @@ package ParcialEmpresa;
  * @author gasto
  */
 public class Empresa {
+    private int dimf;
     private String nombre;
     private String direccion;
     private Director director;
@@ -17,17 +18,26 @@ public class Empresa {
     
     //constructores
     public Empresa(String unNombre, String unaDireccion, Director unDirector, int cant){
+        setDimf(cant);
         setNombre(unNombre);
         setDireccion(unaDireccion);
         setDirector(unDirector);
-        sucursales = new Encargado[cant];
+        sucursales = new Encargado[getDimf()];
         
-        for(int i = 0; i < cant; i++){
+        for(int i = 0; i < getDimf(); i++){
             sucursales[i] = null;
         }
     }
     //getter y setter
 
+    public int getDimf() {
+        return dimf;
+    }
+
+    public void setDimf(int dimf) {
+        this.dimf = dimf;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -52,4 +62,23 @@ public class Empresa {
         this.director = director;
     }
     
+    public void agregarEncargado(Encargado unEncargado, int pos){
+        sucursales[pos] = unEncargado;
+    }
+    
+    @Override
+    public String toString(){
+        String aux;
+        aux = "Nombre empresa: "+ getNombre()+" Direccion: "+getDireccion() + " Director: "+getDirector().toString();
+        for(int i = 0; i < getDimf(); i++){
+            aux = aux + " Sucursal Nro: " + i + " Encargado: ";
+            if(sucursales[i] == null){
+                aux = aux + "Sin encargado";
+            }else{
+                aux = aux + sucursales[i].toString();
+            }
+        }
+        return aux;
+    }
 }
+ 

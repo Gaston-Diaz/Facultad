@@ -13,8 +13,8 @@ public class Director extends Persona{
     private double montoViaticos;
     
     //constructores
-    public Director(String unNombre,int unAnio,double unSueldo,double unViatico){
-        super(unNombre,unAnio,unSueldo);
+    public Director(String unNombre,int unAnio,int unDni,double unSueldo,double unViatico){
+        super(unNombre,unAnio,unDni,unSueldo);
         setMontoViaticos(unViatico);
     }
 
@@ -24,6 +24,13 @@ public class Director extends Persona{
 
     public void setMontoViaticos(double montoViaticos) {
         this.montoViaticos = montoViaticos;
+    }
+    
+    @Override
+    public String toString(){
+        String aux;
+        aux = super.toString()+ " sueldo: "+ sueldo();
+        return aux;
     }
     
     @Override
