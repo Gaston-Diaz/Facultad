@@ -25,6 +25,9 @@ public class Torneo {
             fechas[i] = aux; // lo guardo en el arreglo
             auxGoleadores[i]= 0; // arreglo de contadores inicialmente vacio
         }
-        
+    }
+    
+    public void agregarGoleadoraFecha(int fecha, Goleador unGoleador){
+        fechas[fecha].agregar(unGoleador);
     }
 }
