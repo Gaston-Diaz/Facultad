@@ -31,4 +31,13 @@ public class Torneo {
         fechas[fecha].agregar(unGoleador);
         auxGoleadores[fecha] = auxGoleadores[fecha] + 1;
     }
+    
+    @Override
+    public String toString(){
+        String aux = " Fecha ";
+        for(int i = 0; i < dimf; i++){
+            aux = aux + i + " Cantidad de Goleadores: "+ auxGoleadores[i] + fechas[i].toString();
+        }
+        return aux;
+    }
 }

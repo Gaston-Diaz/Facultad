@@ -42,6 +42,12 @@ public class Goleador {
 
     public void setGoles(int goles) {
         this.goles = goles;
-    }   
+    } 
     
+    @Override
+    public String toString(){
+        String aux;
+        aux = " Nombre: "+getNombre() + " Nombre Equipo: "+getNombreE()+ " Goles: " +getGoles();
+        return aux;
+    }
 }

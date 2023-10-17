@@ -47,4 +47,14 @@ public class Fecha {
         goleadores[getDiml()] = unGoleador;
         aumentarDiml();
     }
+    
+    @Override
+    public String toString(){
+        String aux = " Goleadores: ";
+        
+        for(int i = 0; i < getDiml(); i++){
+            aux = aux + goleadores.toString();
+        }
+        return aux;
+    }
 }
