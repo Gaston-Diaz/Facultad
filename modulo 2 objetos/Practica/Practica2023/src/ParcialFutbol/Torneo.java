@@ -29,5 +29,6 @@ public class Torneo {
     
     public void agregarGoleadoraFecha(int fecha, Goleador unGoleador){
         fechas[fecha].agregar(unGoleador);
+        auxGoleadores[fecha] = auxGoleadores[fecha] + 1;
     }
 }
