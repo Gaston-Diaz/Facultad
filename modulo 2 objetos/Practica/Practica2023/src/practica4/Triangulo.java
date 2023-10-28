@@ -9,6 +9,6 @@ package practica4;
  *
  * @author gasto
  */
-public class Triangulo extends Figura {
+//public class Triangulo extends Figura {
     
-}
+//}

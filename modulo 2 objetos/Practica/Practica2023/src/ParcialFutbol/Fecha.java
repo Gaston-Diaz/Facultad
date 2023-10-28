@@ -10,18 +10,51 @@ package ParcialFutbol;
  * @author gasto
  */
 public class Fecha {
-    private int cantGoleadores;
+    private int dimf;
+    private int diml;
     private Goleador[] goleadores;
     
-    public Fecha(){}
-
-    public int getCantGoleadores() {
-        return cantGoleadores;
+    public Fecha(int cant){
+        setDiml(0);
+        setDimf(cant);
+        goleadores = new Goleador[getDimf()];
+        
+        for (int i= 0; i < getDimf(); i++){
+            goleadores[i]= null;
+        }
     }
 
-    public void setCantGoleadores(int cantGoleadores) {
-        this.cantGoleadores = cantGoleadores;
+    public int getDimf() {
+        return dimf;
+    }
+
+    public void setDimf(int dimf) {
+        this.dimf = dimf;
+    }
+
+    public int getDiml() {
+        return diml;
+    }
+
+    public void setDiml(int diml) {
+        this.diml = diml;
+    }
+    public void aumentarDiml(){
+        diml++;
+    }
+   
+    public void agregar(Goleador unGoleador){
+        goleadores[getDiml()] = unGoleador;
+        aumentarDiml();
     }
     
-    
+    @Override
+    public String toString(){
+        String aux = " Goleadores: ";
+        
+        for(int i = 0; i < getDiml(); i++){
+            aux = aux + goleadores.toString();
+        }
+        return aux;
+    }
 }
