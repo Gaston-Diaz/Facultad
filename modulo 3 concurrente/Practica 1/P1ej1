@@ -1,0 +1,35 @@
+programa P1ejercio1A
+procesos
+  proceso juntarFlores(ES num:numero;ES esquina:numero)
+  comenzar
+    si(HayFlorEnLaEsquina)
+      mientras(HayFlorEnLaEsquina)
+        tomarFlor
+        num:= num + 1
+    sino
+      esquina:= esquina + 1
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    num:numero
+    esquina:numero
+  comenzar
+    num:=0
+    esquina:=0
+    repetir 99
+      juntarFlores(num,esquina)
+      mover 
+    mientras(HayFlorEnLaBolsa)
+      depositarFlor 
+    Informar(esquina)
+    Informar(num)
+  fin
+variables
+  robot1 : tipo1
+comenzar
+  AsignarArea(robot1,ciudad)
+  Iniciar(robot1,1,1)
+fin
