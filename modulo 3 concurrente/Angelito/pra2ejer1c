@@ -1,0 +1,91 @@
+programa pra2ejer1c
+procesos
+  proceso recogerFlor(ES cant:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cant:=cant+1
+  fin
+  proceso recorrerAvenida(ES cant:numero)
+  comenzar
+    repetir 9
+      recogerFlor(cant)
+      mover
+    recogerFlor(cant)
+  fin
+areas
+  ciudad:AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    id:numero
+    cant:numero
+  comenzar
+    cant:=0
+    RecibirMensaje(id,robot7)
+    recorrerAvenida(cant)
+    EnviarMensaje(id,robot7)
+    EnviarMensaje(cant,robot7)
+  fin
+  robot tipo2
+  variables
+    id:numero
+    cant:numero
+    max,idMax:numero
+  comenzar
+    max:=0
+    EnviarMensaje(1,robot1)
+    EnviarMensaje(2,robot2)
+    EnviarMensaje(3,robot3)
+    EnviarMensaje(4,robot4)
+    EnviarMensaje(5,robot5)
+    EnviarMensaje(6,robot6)
+    repetir 6
+      RecibirMensaje(id,*)
+      si(id=1)
+        RecibirMensaje(cant,robot1)
+      sino
+        si(id=2)
+          RecibirMensaje(cant,robot2)
+        sino
+          si(id=3)
+            RecibirMensaje(cant,robot3)
+          sino
+            si(id=4)
+              RecibirMensaje(cant,robot4)
+            sino
+              si(id=5)
+                RecibirMensaje(cant,robot5)
+              sino
+                si(id=6)
+                  RecibirMensaje(cant,robot6)
+    si(cant>=max)
+      max:=cant
+      idMax:=id    
+    Informar(idMax)
+    Informar(max)
+  fin
+variables
+  robot1:tipo1
+  robot2:tipo1
+  robot3:tipo1
+  robot4:tipo1
+  robot5:tipo1
+  robot6:tipo1
+  robot7:tipo2
+comenzar
+  AsignarArea(robot1,ciudad)
+  AsignarArea(robot2,ciudad)
+  AsignarArea(robot3,ciudad)
+  AsignarArea(robot4,ciudad)
+  AsignarArea(robot5,ciudad)
+  AsignarArea(robot6,ciudad)
+  AsignarArea(robot7,ciudad)
+  Iniciar(robot1,1,1)
+  Iniciar(robot2,2,2)
+  Iniciar(robot3,3,3)
+  Iniciar(robot4,4,4)
+  Iniciar(robot5,5,5)
+  Iniciar(robot6,6,6)
+  Iniciar(robot7,8,1)
+fin
