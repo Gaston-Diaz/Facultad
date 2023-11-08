@@ -24,9 +24,11 @@ procesos
   comenzar
     mientras(m >= 1) 
       repetir m
+        juntarFlores
         mover
       derecha
       repetir m
+        juntarFlores
         mover
       arribaI
       m:= m - 1 
@@ -35,9 +37,11 @@ procesos
   comenzar
     mientras(m <= 5) 
       repetir m
+        juntarFlores
         mover
       derecha
       repetir m
+        juntarFlores
         mover
       arribaI
       m:= m + 1 
@@ -46,9 +50,11 @@ procesos
   comenzar
     mientras(n >= 1) 
       repetir n
+        juntarPapeles
         mover
       izquierda
       repetir n
+        juntarPapeles
         mover
       derecha
       n:= n - 1 
@@ -57,10 +63,12 @@ procesos
   comenzar
     mientras(n<=5)
       repetir n
+        juntarPapeles
         mover
       repetir 3
         derecha
       repetir n
+        juntarPapeles
         mover
       derecha
       n:= n + 1
@@ -74,8 +82,10 @@ robots
   comenzar
     m:= 5
     escalon1(m)
+    BloquearEsquina(16,16)
     izquierda
     escalon2(m)
+    LiberarEsquina(16,16)
   fin
   robot tipo2
   variables
@@ -83,15 +93,17 @@ robots
   comenzar
     n:= 5
     escalon3(n)
+    BloquearEsquina(16,16)
     derecha
     escalon4(n)
+    LiberarEsquina(16,16)
   fin
   robot tipo3
   variables
     id:numero
+    ganador:numero
   comenzar
-    Pos(100,100)
-    BloquearEsquina(16,16)
+    Pos(100,100) 
   fin
 variables
   robot1:tipo1
