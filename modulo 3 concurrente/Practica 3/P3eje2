@@ -31,7 +31,7 @@ procesos
       arribaI
       m:= m - 1 
   fin
-    proceso escalon2(E m:numero)
+  proceso escalon2(E m:numero)
   comenzar
     mientras(m <= 5) 
       repetir m
@@ -40,9 +40,31 @@ procesos
       repetir m
         mover
       arribaI
-      m:= m - 1 
+      m:= m + 1 
   fin
-
+  proceso escalon3(ES n:numero)
+  comenzar
+    mientras(n >= 1) 
+      repetir n
+        mover
+      izquierda
+      repetir n
+        mover
+      derecha
+      n:= n - 1 
+  fin
+  proceso escalon4(E n:numero)
+  comenzar
+    mientras(n<=5)
+      repetir n
+        mover
+      repetir 3
+        derecha
+      repetir n
+        mover
+      derecha
+      n:= n + 1
+  fin
 areas
   ciudad: AreaC(1,1,100,100)
 robots
@@ -54,12 +76,32 @@ robots
     escalon1(m)
     izquierda
     escalon2(m)
-    Informar(PosAv)
-    Informar(PosCa)
+  fin
+  robot tipo2
+  variables
+    n:numero
+  comenzar
+    n:= 5
+    escalon3(n)
+    derecha
+    escalon4(n)
+  fin
+  robot tipo3
+  variables
+    id:numero
+  comenzar
+    Pos(100,100)
+    BloquearEsquina(16,16)
   fin
 variables
   robot1:tipo1
+  robot2:tipo2
+  robot3:tipo3
 comenzar
   AsignarArea(robot1,ciudad)
+  AsignarArea(robot2,ciudad)
+  AsignarArea(robot3,ciudad)
+  Iniciar(robot3,15,1)
   Iniciar(robot1,1,1)
+  Iniciar(robot2,31,1)
 fin
