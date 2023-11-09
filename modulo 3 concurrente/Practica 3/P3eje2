@@ -38,6 +38,7 @@ procesos
     juntarFlores
     BloquearEsquina(16,16)
     mover
+    EnviarMensaje(1,robot3)
     arribaI
   fin
   proceso escalon2(E m:numero)
@@ -79,6 +80,7 @@ procesos
     juntarPapeles
     BloquearEsquina(16,16)
     mover
+    EnviarMensaje(2,robot3)
     derecha
   fin
   proceso escalon4(E n:numero)
@@ -115,6 +117,7 @@ robots
     escalon1(m)
     izquierda
     escalon2(m)
+    EnviarMensaje(V,robot3)
   fin
   robot tipo2
   variables
@@ -124,13 +127,23 @@ robots
     escalon3(n)
     derecha
     escalon4(n)
+    EnviarMensaje(V,robot3)
   fin
   robot tipo3
   variables
     id:numero
-    ganador:numero
+    ganador: numero
+    ok:boolean
   comenzar
-    Pos(100,100) 
+    repetir 2
+      RecibirMensaje(id,*)
+    si(id = 1)
+      ganador:= 2
+    sino
+      ganador:= 1
+    repetir 2
+      RecibirMensaje(ok,*)
+    Informar(ganador)
   fin
 variables
   robot1:tipo1
