@@ -22,7 +22,7 @@ procesos
   fin
   proceso escalon1(ES m:numero)
   comenzar
-    mientras(m >= 1) 
+    mientras(m > 1) 
       repetir m
         juntarFlores
         mover
@@ -31,10 +31,25 @@ procesos
         juntarFlores
         mover
       arribaI
-      m:= m - 1 
+      m:= m - 1
+    juntarFlores
+    mover
+    derecha
+    juntarFlores
+    BloquearEsquina(16,16)
+    mover
+    arribaI
   fin
   proceso escalon2(E m:numero)
   comenzar
+    juntarFlores
+    mover
+    LiberarEsquina(16,16)
+    derecha
+    juntarFlores
+    mover
+    arribaI
+    m:= m + 1
     mientras(m <= 5) 
       repetir m
         juntarFlores
@@ -48,7 +63,7 @@ procesos
   fin
   proceso escalon3(ES n:numero)
   comenzar
-    mientras(n >= 1) 
+    mientras(n > 1) 
       repetir n
         juntarPapeles
         mover
@@ -57,10 +72,26 @@ procesos
         juntarPapeles
         mover
       derecha
-      n:= n - 1 
+      n:= n - 1
+    juntarPapeles
+    mover
+    izquierda
+    juntarPapeles
+    BloquearEsquina(16,16)
+    mover
+    derecha
   fin
   proceso escalon4(E n:numero)
   comenzar
+    juntarPapeles
+    mover
+    LiberarEsquina(16,16)
+    repetir 3
+      derecha
+    juntarPapeles
+    mover
+    derecha
+    n:= n + 1
     mientras(n<=5)
       repetir n
         juntarPapeles
@@ -82,10 +113,8 @@ robots
   comenzar
     m:= 5
     escalon1(m)
-    BloquearEsquina(16,16)
     izquierda
     escalon2(m)
-    LiberarEsquina(16,16)
   fin
   robot tipo2
   variables
@@ -93,10 +122,8 @@ robots
   comenzar
     n:= 5
     escalon3(n)
-    BloquearEsquina(16,16)
     derecha
     escalon4(n)
-    LiberarEsquina(16,16)
   fin
   robot tipo3
   variables
