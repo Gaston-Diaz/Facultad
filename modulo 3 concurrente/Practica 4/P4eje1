@@ -20,32 +20,33 @@ robots
     av: numero
     ca: numero
     cant: numero
-    final: numero
     ok: boolean
     aux:numero
   comenzar
-    final:= 100
     av:= PosAv
     ca:= PosCa + 1 
     RecibirMensaje(id,r4)
-    mientras(final > ca) 
+    mientras(ca < 100) 
       Random(cant,1,4)
       aux:= ca + cant
-      si(aux <= 100)
+      si(aux > 100)
+        Informar(aux)
+        ca:= 100
+        EnviarMensaje(id,r4)
+        EnviarMensaje(0,r4)
+      sino
         EnviarMensaje(id,r4)
         EnviarMensaje(cant,r4)
         EnviarMensaje(av,r4)
         EnviarMensaje(ca,r4)
         RecibirMensaje(ok,r4)
-        mover
+        Pos(av,ca)
         mientras(HayFlorEnLaEsquina)
           tomarFlor
         mientras(HayFlorEnLaBolsa)
           depositarFlor
           mover
         ca:= PosCa + 1
-      sino
-        ca:= 101
   fin
   robot tipo2
   variables
@@ -64,26 +65,35 @@ robots
       RecibirMensaje(id,*)
       si(id = 1)
         RecibirMensaje(cant,r1)
-        RecibirMensaje(av,r1)
-        RecibirMensaje(ca,r1)
-        BloquearEsquina(av,ca)
-        irADepositar(av,ca,cant)
-        EnviarMensaje(V,r1)
+        si(cant = 0)
+          aux:= aux + 1
+        sino
+          RecibirMensaje(av,r1)
+          RecibirMensaje(ca,r1)
+          BloquearEsquina(av,ca)
+          irADepositar(av,ca,cant)
+          EnviarMensaje(V,r1)
       sino
         si(id = 2)
           RecibirMensaje(cant,r2)
-          RecibirMensaje(av,r2)
-          RecibirMensaje(ca,r2)
-          BloquearEsquina(av,ca)
-          irADepositar(av,ca,cant)
-          EnviarMensaje(V,r2)
+          si(cant = 0)
+            aux:= aux + 1
+          sino
+            RecibirMensaje(av,r2)
+            RecibirMensaje(ca,r2)
+            BloquearEsquina(av,ca)
+            irADepositar(av,ca,cant)
+            EnviarMensaje(V,r2)
         sino
           RecibirMensaje(cant,r3)
-          RecibirMensaje(av,r3)
-          RecibirMensaje(ca,r3)
-          BloquearEsquina(av,ca)
-          irADepositar(av,ca,cant)
-          EnviarMensaje(V,r3)
+          si(cant = 0)
+            aux:= aux + 1
+          sino
+            RecibirMensaje(av,r3)
+            RecibirMensaje(ca,r3)
+            BloquearEsquina(av,ca)           
+            irADepositar(av,ca,cant)
+            EnviarMensaje(V,r3)
     Informar(aux)
   fin
 variables
