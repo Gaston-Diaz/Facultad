@@ -1,0 +1,51 @@
+programa clienteServidor
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    id:numero
+    num:numero
+    miAv:numero
+    miSig:numero
+  comenzar
+    miAv: PosAv
+    miSig: PosCa + 1
+    RecibirMensaje(id,robot4)
+    Random(num,1,4)
+    EnviarMensaje(id,robot4)
+    EnviarMensaje(num,robot4)
+    EnviarMensaje(miAv,robot4)
+    EnviarMensaje(miSig,robot4)
+    mover
+    repetir num
+      tomarFlor
+    repetir num
+      mover
+      depositarFlor
+  fin
+  robot tipo2
+  variables
+    id:numero
+    av:numero
+    ca:numero
+  comenzar
+    EnviarMensaje(1,robot1)
+    EnviarMensaje(2,robot2)    
+    EnviarMensaje(3,robot3)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  r3: tipo1
+  r4: tipo2
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(r3,ciudad)
+  AsignarArea(r4,ciudad)
+  Iniciar(r4,100,100)
+  Iniciar(r1,1,1)
+  Iniciar(r2,2,1)
+  Iniciar(r3,3,1)
+fin
