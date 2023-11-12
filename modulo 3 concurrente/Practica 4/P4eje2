@@ -1,0 +1,81 @@
+programa ejer2p4
+areas
+  area1: AreaPC(5,1,5,100)
+  area2: AreaPC(10,1,10,100)
+  area3: AreaP(11,1,11,1)
+  area4: AreaP(12,1,12,1)
+  deposito: AreaC(50,50,50,50)
+robots
+  robot tipo1
+  variables
+    cant: numero
+    av: numero
+    ca: numero
+  comenzar
+    cant:= 0
+    repetir 99
+      mientras(HayPapelEnLaEsquina)
+        av:= PosAv
+        ca:= PosCa
+        tomarPapel
+        cant:=cant + 1
+        si(cant = 5)
+          BloquearEsquina(50,50)
+          Pos(50,50)
+          mientras(HayPapelEnLaBolsa)
+            depositarPapel
+          Pos(av,ca)
+          LiberarEsquina(50,50)
+          cant:= 0
+      mover
+  fin
+  robot tipo2
+  variables
+    av:numero
+    ca:numero
+    aux:numero
+    rep:numero
+    cant:numero
+  comenzar
+    rep:= 0
+    av:= PosAv
+    ca:= PosCa
+    mientras(rep < 8)
+      Random(aux,2,5)
+      BloquearEsquina(50,50)
+      Pos(50,50)
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cant:= cant + 1
+      mientras(HayPapelEnLaBolsa)
+        depositarPapel
+      si(cant > aux)
+        repetir aux
+          tomarPapel
+      sino
+        rep:= rep + 1
+      Pos(av,ca)
+      LiberarEsquina(50,50)
+      cant:= 0
+      mientras(HayPapelEnLaBolsa)
+        depositarPapel
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  r3: tipo2
+  r4: tipo2
+comenzar
+  AsignarArea(r1,area1)
+  AsignarArea(r1,deposito)
+  AsignarArea(r2,area2)
+  AsignarArea(r2,deposito)
+  AsignarArea(r3,area3)
+  AsignarArea(r3,deposito)
+  AsignarArea(r4,area4)
+  AsignarArea(r4,deposito)
+  Iniciar(r1,5,1)
+  Iniciar(r2,10,1)
+  Iniciar(r3,11,1)
+  Iniciar(r4,12,1)
+fin
