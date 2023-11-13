@@ -29,6 +29,7 @@ robots
     repetir 99
       juntarFlores(cant)
       mover
+    juntaFlores(cant)
     EnviarMensaje(id,fisca)
     EnviarMensaje(cant,fisca)
   fin
@@ -42,6 +43,7 @@ robots
     repetir 99
       juntarPapeles(cant)
       mover
+    juntarPapeles(cant)
     EnviarMensaje(id,fisca)
     EnviarMensaje(cant,fisca)
   fin
