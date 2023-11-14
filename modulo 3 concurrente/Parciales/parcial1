@@ -21,35 +21,63 @@ robots
   variables
     id:numero
     cant:numero
+    av:numero
+    ca:numero
+    ok:boolean
   comenzar
     cant:= 0
+    av:= PosAv
+    ca:= PosCa
     RecibirMensaje(id,fisca)
-    repetir 10
+    BloquearEsquina(av,ca)
+    juntarFlores(cant)
+    mover
+    EnviarMensaje(id,fisca)
+    LiberarEsquina(av,ca)
+    repetir 9
       juntarFlores(cant)
       mover
     derecha
-    repetir 10
+    repetir 9
       juntarFlores(cant)
       mover
+    juntarFlores(cant)
+    RecibirMensaje(ok,fisca)
+    mover
+    juntarFlores(cant)
     EnviarMensaje(id,fisca)
     EnviarMensaje(cant,fisca)
   fin
   robot tipo2
   variables
     id:numero
-    cant: numero
+    cant:numero
+    av:numero
+    ca:numero
+    ok:boolean
   comenzar
     cant:=0
+    av:= PosAv
+    ca:= PosCa
     RecibirMensaje(id,fisca)
+    BloquearEsquina(av,ca)
     repetir 2
       derecha
-    repetir 10
+    juntarPapeles(cant)
+    mover
+    EnviarMensaje(id,fisca)
+    LiberarEsquina(av,ca)
+    repetir 9
       juntarPapeles(cant)
       mover
     derecha
-    repetir 10
+    repetir 9
       juntarPapeles(cant)
       mover
+    juntarPapeles(cant)
+    RecibirMensaje(ok,fisca)
+    mover
+    juntarPapeles(cant)
     EnviarMensaje(id,fisca)
     EnviarMensaje(cant,fisca)
   fin
@@ -61,6 +89,7 @@ robots
     cant:numero
     aux:numero
     id:numero
+    ok:boolean
   comenzar
     e1:= 0
     e2:= 0
@@ -69,6 +98,18 @@ robots
     EnviarMensaje(2,f2)
     EnviarMensaje(3,p1)
     EnviarMensaje(4,p2)
+    repetir 4
+      RecibirMensaje(id,*)
+      si(id = 1)
+        EnviarMensaje(V,p1)
+      sino
+        si(id = 2)
+          EnviarMensaje(V,p2)
+        sino
+          si(id = 3)
+            EnviarMensaje(V,f1)
+          sino
+            EnviarMensaje(V,f2)
     repetir 4
       RecibirMensaje(id,*)
       si(id = 1)
