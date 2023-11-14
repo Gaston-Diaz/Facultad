@@ -1,0 +1,97 @@
+programa ejer3BP4
+procesos
+  proceso juntarPapeles
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+  fin
+areas
+  areaR1: AreaP(1,1,1,100)
+  areaR2: AreaP(2,1,2,100)
+  areaR3: AreaP(3,1,3,100)
+  areaR4: AreaP(4,1,4,1)
+robots
+  robot tipo1
+  variables
+    id: numero
+    barrera: numero
+    cant: numero
+    papeles:numero
+    estotal: numero
+    ok: boolean
+    segui: boolean
+    i:numero
+  comenzar
+    RecibirMensaje(id,coor)
+    i:= 2
+    papeles:= 0
+    estotal:= 0
+    mientras(estotal < 99)
+      Random(cant,1,5)
+      segui:= V
+      mientras(segui = V)
+        mientras(HayPapelEnLaEsquina)
+          tomarPapel
+          papeles:= papeles + 1
+          si(papeles = cant)
+            papeles:= 0
+            segui:= F
+            si(id = 1)
+              EnviarMensaje(V,r2)
+              EnviarMensaje(V,r3)
+            sino
+              si(id = 2)
+                EnviarMensaje(V,r1)
+                EnviarMensaje(V,r3)
+              sino
+                EnviarMensaje(V,r1)
+                EnviarMensaje(V,r2)
+            si(i = 2)
+              repetir 2
+                RecibirMensaje(ok,*)
+                si(ok = F)
+                  i:= i - 1
+            sino
+              si(i = 1)
+                RecibirMensaje(ok,*)
+                si(ok = F)
+                  i:= i - 1
+        estotal:=estotal + 1
+        si(estotal > 99)
+          segui:= F
+        sino
+          mover
+    repetir 2
+      si(id = 1)
+        EnviarMensaje(F,r2)
+        EnviarMensaje(F,r3)
+      sino
+        si(id = 2)
+          EnviarMensaje(F,r1)
+          EnviarMensaje(F,r3)
+        sino
+          EnviarMensaje(F,r1)
+          EnviarMensaje(F,r2)
+    juntarPapeles
+  fin
+  robot tipo2
+  comenzar
+    EnviarMensaje(1,r1)
+    EnviarMensaje(2,r2)
+    EnviarMensaje(3,r3)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  r3: tipo1
+  coor: tipo2
+comenzar
+  AsignarArea(r1,areaR1)
+  AsignarArea(r2,areaR2)
+  AsignarArea(r3,areaR3)
+  AsignarArea(coor,areaR4)
+  Iniciar(coor,4,1)
+  Iniciar(r1,1,1)
+  Iniciar(r2,2,1)
+  Iniciar(r3,3,1)
+fin

@@ -15,13 +15,33 @@ robots
   variables
     id: numero
     barrera: numero
+    esquinas: numero
+    estotal: numero
+    ok: boolean
   comenzar
     RecibirMensaje(id,coor)
-    barrera:= 0
-    repetir 99
+    estotal:= 0
+    esquinas:= 0
+    mientras(estotal < 99)
       juntarPapeles
       mover
-      si
+      esquinas:= esquinas + 1
+      si(esquinas = 5)
+        estotal:= estotal + 5
+        esquinas:= 0
+        si(id= 1)
+          EnviarMensaje(V,r2)
+          EnviarMensaje(V,r3)
+        sino
+          si(id = 2)
+            EnviarMensaje(V,r1)
+            EnviarMensaje(V,r3)
+          sino
+            EnviarMensaje(V,r1)
+            EnviarMensaje(V,r2)
+        Informar('llegue',id)
+        repetir 2
+          RecibirMensaje(ok,*)
     juntarPapeles
   fin
   robot tipo2
