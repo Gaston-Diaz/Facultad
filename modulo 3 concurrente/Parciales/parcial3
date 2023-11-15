@@ -6,7 +6,7 @@ procesos
       tomarFlor
       cant:= cant + 1  
   fin
-  proceso cuadrado(E lado:numero; ES av: numero; ES ca:numero,ES cant:numero)
+  proceso cuadrado(E lado:numero; ES av: numero; ES ca:numero; ES cant:numero)
   comenzar
     repetir lado
       juntarFlores(cant)
