@@ -1,0 +1,99 @@
+programa parcial
+procesos
+  proceso juntarFlores(ES flores:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    id:numero
+    ca:numero
+    int:numero
+    i: numero
+    j:numero
+    flores: numero
+    auxAv:numero
+    auxCa:numero
+  comenzar
+    flores:= 0
+    i:= 60
+    RecibirMensaje(id,coor)
+    si(id = 2)
+      RecibirMensaje(ca,coor)
+      Pos(1,ca)
+      derecha
+    RecibirMensaje(int,coor)
+    i:= i - int
+    j:= int - 2
+    juntarFlores(flores)
+    repetir j
+      mover
+      juntarFlores(flores)
+    si(id = 1)
+      BloquearEsquina(5,int)
+      mover
+      EnviarMensaje(id,coor)
+      juntarFlores(flores)
+      mover
+      LiberarEsquina(5,int)
+      juntarFlores(flores)
+    sino
+      BloquearEsquina(int,ca)
+      mover
+      EnviarMensaje(id,coor)
+      juntarFlores(flores)
+      mover
+      LiberarEsquina(int,ca)
+      juntarFlores(flores)
+    repetir i
+      mover
+      juntarFlores(flores)
+    EnviarMensaje(id,coor)
+    EnviarMensaje(flores,coor)
+  fin
+  robot tipo2
+  variables
+    id:numero
+    aux: numero
+    ganador: numero
+    cant1:numero
+    cant2:numero
+  comenzar
+    EnviarMensaje(1,r1)
+    EnviarMensaje(2,r2)
+    Random(aux,2,25)
+    EnviarMensaje(aux,r2)
+    EnviarMensaje(aux,r1)
+    EnviarMensaje(5,r2)
+    repetir 2
+      RecibirMensaje(ganador,*)
+    repetir 2
+      RecibirMensaje(id,*)
+      si(id = 1)
+        RecibirMensaje(cant1,*)
+      sino
+        RecibirMensaje(cant2,*)
+    si(ganador = 1)
+      Informar('Ganador',2)
+      Informar('cantidad',cant2)
+    sino
+      Informar('Ganador',1)
+      Informar('cantidad',cant1)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  coor: tipo2
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(coor,ciudad)
+  Iniciar(r1,5,1)
+  Iniciar(r2,1,1)
+  Iniciar(coor,100,100)
+fin
