@@ -2,6 +2,17 @@ Program Vectores;
 type
 	vector = array[1..50] of integer;
 	
+procedure ImprimirVector(v:vector; diml:integer);
+var
+	i: integer;
+begin
+	writeln('Procedimiento cargar vector');
+	for i:= 1 to diml do begin
+		write(i,' = ');
+		writeln(v[i]);
+	end;
+end;
+	
 function generarRandom(min: integer; max: integer): integer;
 var
 	num:integer;
@@ -44,4 +55,5 @@ begin
 	writeln('Ingrese valor maximo: ');
 	readln(max);
 	CargarVector(v,diml,min,max);
+	ImprimirVector(v,diml);
 end.
