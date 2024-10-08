@@ -31,11 +31,12 @@ public class Habitacion {
     
     public void ingresoCliente(Cliente unCli){
         cli = unCli;
+        ocupada = true;
     }
     
     @Override
     public String toString(){
-        String aux = " Costo: " + costoXnoche + " libre: " + estaOcupada();  
+        String aux = " Costo: " + costoXnoche + " ocupada: " + estaOcupada();  
         if(estaOcupada()){
             aux = aux + " cliente: " + cli.toString();
         }
