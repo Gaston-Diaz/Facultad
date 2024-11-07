@@ -1,0 +1,100 @@
+programa ejercicio3b
+procesos
+  proceso juntarPapeles(ES cant:numero)
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      cant:= cant + 1
+  fin
+  proceso juntarFlores(ES cant:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cant:= cant + 1
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cant:numero
+  comenzar
+    cant:=0
+    derecha
+    repetir 9
+      juntarFlores(cant)
+      mover
+    EnviarMensaje(cant,b2)
+    RecibirMensaje(cant,b2)
+    Pos(21,1)
+    repetir 9
+      juntarFlores(cant)
+      mover
+    EnviarMensaje(cant,b2)
+  fin
+  robot tipo2
+  variables
+    cant:numero
+  comenzar
+    RecibirMensaje(cant,b1)
+    derecha
+    repetir 9
+      juntarFlores(cant)
+      mover
+    EnviarMensaje(cant,b1)
+    RecibirMensaje(cant,b1)
+    Pos(31,1)
+    repetir 9
+      juntarFlores(cant)
+      mover
+    Informar(cant)
+  fin
+  robot tipo3
+  variables
+    cant:numero
+  comenzar
+    cant:=0
+    derecha
+    repetir 9
+      juntarPapeles(cant)
+      mover
+    EnviarMensaje(cant,a2)
+    RecibirMensaje(cant,a2)
+    Pos(21,5)
+    repetir 9
+      juntarPapeles(cant)
+      mover
+    EnviarMensaje(cant,a2)
+  fin
+  robot tipo4
+  variables
+    cant: numero
+  comenzar
+    RecibirMensaje(cant,a1)
+    derecha
+    repetir 9
+      juntarPapeles(cant)
+      mover
+    EnviarMensaje(cant,a1)
+    RecibirMensaje(cant,a1)
+    Pos(31,5)
+    repetir 9
+      juntarPapeles(cant)
+      mover
+    Informar(cant)
+  fin
+variables
+  a1: tipo3
+  a2: tipo4
+  b1: tipo1
+  b2: tipo2
+comenzar
+  AsignarArea(a1,ciudad)
+  AsignarArea(a2,ciudad)
+  AsignarArea(b1,ciudad)
+  AsignarArea(b2,ciudad)
+  Iniciar(a1,1,1)
+  Iniciar(a2,11,1)
+  Iniciar(b1,1,5)
+  Iniciar(b2,11,5)    
+fin

@@ -1,0 +1,58 @@
+programa ejercicio2
+procesos
+  proceso juntarFlores(ES cant:numero)
+  comenzar
+    cant:= 0
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cant:= cant + 1
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    max: numero
+    cant: numero
+    alto:numero
+  comenzar
+    max:= 0
+    repetir 4
+      Random(alto,1,5)
+      repetir alto
+        juntarFlores(cant)
+        mover
+      derecha
+      mover
+      repetir 3
+        derecha
+      si(max < cant)
+        max:= cant
+    EnviarMensaje(max, jefe)
+  fin
+  robot tipo2
+  variables
+    cant:numero
+    total: numero
+  comenzar
+    total:= 0
+    repetir 3
+      RecibirMensaje(cant,*)
+      total:= total + cant
+    Informar(total)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  r3: tipo1
+  jefe: tipo2
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(r3,ciudad)
+  AsignarArea(jefe,ciudad)
+  Iniciar(jefe,1,1)
+  Iniciar(r1,2,1)
+  Iniciar(r2,7,1)
+  Iniciar(r3,12,1)
+fin
