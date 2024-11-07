@@ -1,0 +1,62 @@
+programa ejercicio3
+procesos
+  proceso juntarFlores(ES cantF:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cantF:= cantF + 1
+  fin
+  proceso juntarPapeles(ES cantP:numero)
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      cantP:= cantP + 1
+  fin
+  proceso escalon(ES cant:numero; ES aux:numero)
+  variables
+    cantF: numero
+    cantP: numero
+  comenzar
+    cantF:=0
+    cantP:=0
+    repetir cant
+      juntarFlores(cantF)
+      juntarPapeles(cantP)
+      mover
+    derecha
+    repetir cant
+      juntarFlores(cantF)
+      juntarPapeles(cantP)
+      mover
+    repetir 3
+      derecha
+    si(cantP > cantF)
+      aux:= aux + 1   
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cant: numero
+    aux: numero
+  comenzar
+    aux:= 0
+    cant:= 0
+    repetir 4
+      cant:= cant + 1
+      escalon(cant,aux)
+    Informar(aux)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  r3: tipo1
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad) 
+  AsignarArea(r3,ciudad)
+  Iniciar(r1,12,14)
+  Iniciar(r2,17,10)
+  Iniciar(r3,22,6)
+fin

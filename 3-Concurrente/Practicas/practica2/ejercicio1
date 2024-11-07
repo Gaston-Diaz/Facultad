@@ -1,0 +1,45 @@
+programa ejercicio1
+procesos
+  proceso juntarFlores(ES CF:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      CF:= CF + 1
+  fin
+  proceso recorrer(ES CF:numero)
+  comenzar
+    repetir 10
+      juntarFlores(CF)
+      mover
+  fin
+areas
+  area1: AreaP(1,1,1,100)
+  area2: AreaP(2,1,2,100)
+robots
+  robot tipo1
+  variables
+    CF: numero
+    CFre: numero
+  comenzar
+    CF:= 0
+    recorrer(CF)
+    si(PosCa = 11)
+      EnviarMensaje(CF,r2)
+      RecibirMensaje(CFre,r2)
+      si(CF > CFre)
+        Informar(CF - CFre)
+    sino
+      EnviarMensaje(CF,r1)
+      RecibirMensaje(CFre,r1)
+      si(CF > CFre)
+        Informar(CF - CFre)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+comenzar
+  AsignarArea(r1,area1)
+  AsignarArea(r2,area2)
+  Iniciar(r1,1,1)
+  Iniciar(r2,2,11)
+fin

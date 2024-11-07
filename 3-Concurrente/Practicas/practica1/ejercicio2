@@ -1,0 +1,53 @@
+programa ejercicio2
+procesos
+  proceso juntarPapeles
+  variables
+    cant: numero
+  comenzar
+    cant:= 0
+    repetir 20
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cant:= cant + 1
+      mover
+    Informar(cant)
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  comenzar
+    juntarPapeles
+  fin
+  robot tipo2
+  comenzar
+    derecha
+    juntarPapeles
+  fin
+  robot tipo3
+  comenzar
+    repetir 2
+      derecha
+    juntarPapeles
+  fin
+  robot tipo4
+  comenzar
+    repetir 3
+      derecha
+    juntarPapeles
+  fin
+variables
+  r1: tipo1
+  r2: tipo2
+  r3: tipo3
+  r4: tipo4
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(r3,ciudad)
+  AsignarArea(r4,ciudad)
+  Iniciar(r1,10,10)
+  Iniciar(r2,10,30)
+  Iniciar(r3,30,30)
+  Iniciar(r4,30,10)
+fin

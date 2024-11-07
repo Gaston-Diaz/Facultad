@@ -1,0 +1,42 @@
+programa ejercicio1B
+procesos
+  proceso juntarFlores(ES cant: numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cant:= cant + 1 
+  fin
+  proceso depositarFlores
+  comenzar
+    mientras(HayFlorEnLaBolsa)
+      depositarFlor
+  fin
+  proceso juntar
+  variables
+    cant: numero
+  comenzar
+    repetir 99
+      juntarFlores(cant)
+      mover
+    depositarFlores
+    Informar(cant)
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    juntar
+  fin
+variables
+  r1: robot1
+  r2: robot1
+  r3: robot1
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(r3,ciudad)
+  Iniciar(r1,1,1)
+  Iniciar(r2,3,1)
+  Iniciar(r3,5,1)
+fin
