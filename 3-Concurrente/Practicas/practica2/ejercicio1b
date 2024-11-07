@@ -1,0 +1,56 @@
+programa ejercicio2b
+procesos
+  proceso juntarFlores(ES cantF:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cantF:= cantF + 1
+  fin
+  proceso recorrer(ES cantF:numero)
+  comenzar
+    repetir 10
+      juntarFlores(cantF)
+      mover
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    id:numero
+    cantF:numero
+  comenzar
+    cantF:=0
+    RecibirMensaje(id,fisca)
+    recorrer(cantF)
+    EnviarMensaje(id,fisca)
+    EnviarMensaje(cantF,fisca)
+  fin
+  robot tipo2
+  variables
+    id: numero
+    cantR1: numero
+    cantR2: numero
+  comenzar
+    EnviarMensaje(1,r1)
+    EnviarMensaje(2,r2)
+    repetir 2
+      RecibirMensaje(id,*)
+      si(id = 1)
+        RecibirMensaje(cantR1,r1)
+      sino
+        RecibirMensaje(cantR2,r2)  
+    Informar(cantR1- cantR2)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  fisca: tipo2
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(fisca,ciudad)
+  Iniciar(r1,1,1)
+  Iniciar(r2,2,11)
+  Iniciar(fisca,2,1)
+fin

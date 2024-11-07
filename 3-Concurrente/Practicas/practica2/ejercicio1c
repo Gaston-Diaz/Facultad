@@ -1,0 +1,102 @@
+programa ejercicio1C
+procesos
+  proceso juntarFlores(ES cantF:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cantF:= cantF + 1
+  fin
+  proceso recorrer(ES cantF:numero)
+  comenzar
+    repetir 10
+      juntarFlores(cantF)
+      mover
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    id:numero
+    cantF:numero
+  comenzar
+    cantF:=0
+    RecibirMensaje(id,fisca)
+    recorrer(cantF)
+    EnviarMensaje(id,fisca)
+    EnviarMensaje(cantF,fisca)
+  fin
+  robot tipo2
+  variables
+    id: numero
+    max: numero
+    cantR1: numero
+    cantR2: numero
+    cantR3: numero
+    cantR4: numero
+    cantR5: numero
+    cantR6: numero
+  comenzar
+    max:= 0
+    EnviarMensaje(1,r1)
+    EnviarMensaje(2,r2)
+    EnviarMensaje(3,r3)
+    EnviarMensaje(4,r4)
+    EnviarMensaje(5,r5)
+    EnviarMensaje(6,r6)
+    repetir 6
+      RecibirMensaje(id,*)
+      si(id = 1)
+        RecibirMensaje(cantR1,r1)
+        si(max < cantR1)
+          max:= cantR1
+      sino
+        si(id = 2)
+          RecibirMensaje(cantR2,r2)
+          si(max < cantR2)
+            max:= cantR2
+        sino
+          si(id = 3)
+            RecibirMensaje(cantR3,r3)
+            si(max < cantR3)
+              max:= cantR3
+          sino
+            si(id = 4)
+              RecibirMensaje(cantR4,r4)
+              si(max < cantR4)
+                max:= cantR4
+            sino
+              si(id = 5)
+                RecibirMensaje(cantR5,r5)
+                si(max < cantR5)
+                  max:= cantR5
+              sino
+                RecibirMensaje(cantR6,r6)
+                si(max < cantR6)
+                  max:= cantR6
+    Informar(max)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  r3: tipo1
+  r4: tipo1
+  r5: tipo1
+  r6: tipo1
+  fisca: tipo2
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(r3,ciudad)
+  AsignarArea(r4,ciudad)
+  AsignarArea(r5,ciudad)
+  AsignarArea(r6,ciudad)
+  AsignarArea(fisca,ciudad)
+  Iniciar(r1,1,1)
+  Iniciar(r2,2,11)
+  Iniciar(r3,3,21)
+  Iniciar(r4,4,31)
+  Iniciar(r5,5,41)
+  Iniciar(r6,6,51)
+  Iniciar(fisca,2,1)
+fin
