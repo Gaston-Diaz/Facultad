@@ -1,0 +1,107 @@
+programa ejercicio3
+areas
+  cuadro: AreaC(2,2,10,10)
+  inicio: AreaC(1,1,5,1)
+robots
+  robot tipo1
+  variables
+    ok:numero
+    cant:numero
+    id:numero
+    av:numero
+    ca:numero
+    auxAv:numero
+    auxCa:numero
+  comenzar
+    ok:= 1
+    cant:=0
+    av:= PosAv
+    ca:= PosCa
+    RecibirMensaje(id,jefe)
+    RecibirMensaje(auxAv,jefe)
+    RecibirMensaje(auxCa,jefe)
+    mientras(ok = 1)
+      BloquearEsquina(auxAv,auxCa)
+      Pos(auxAv,auxCa)
+      si(HayFlorEnLaEsquina)
+        tomarFlor
+        cant:= cant + 1
+      sino
+        ok:= 0
+      Pos(av,ca)
+      LiberarEsquina(auxAv,auxCa)
+    EnviarMensaje(id,jefe)
+    EnviarMensaje(cant,jefe)
+  fin
+  robot tipo2
+  variables
+    id:numero
+    cant:numero
+    max:numero
+    ganador:numero
+    av:numero
+    ca:numero
+  comenzar
+    max:=0
+    EnviarMensaje(1,r1)
+    EnviarMensaje(2,r2)
+    EnviarMensaje(3,r3)
+    EnviarMensaje(4,r4)
+    Random(av,2,10)
+    Random(ca,2,10)
+    EnviarMensaje(av,r1)
+    EnviarMensaje(ca,r1)
+    EnviarMensaje(av,r2)
+    EnviarMensaje(ca,r2)
+    EnviarMensaje(av,r3)
+    EnviarMensaje(ca,r3)
+    EnviarMensaje(av,r4)
+    EnviarMensaje(ca,r4)
+    repetir 4
+      RecibirMensaje(id,*)
+      si(id = 1)
+        RecibirMensaje(cant,r1)
+        si(cant > max)
+          max:= cant
+          ganador:= 1
+      sino
+        si(id = 2)
+          RecibirMensaje(cant,r2)
+          si(cant > max)
+            max:= cant
+            ganador:= 2
+        sino
+          si(id = 3)
+            RecibirMensaje(cant,r3)
+            si(cant > max)
+              max:= cant
+              ganador:= 3
+          sino
+            RecibirMensaje(cant,r4)
+            si(cant > max)
+              max:= cant
+              ganador:= 4
+    Informar('Ganador',ganador)  
+  fin
+variables
+  r1: tipo1
+  r2: tipo1  
+  r3: tipo1
+  r4: tipo1
+  jefe: tipo2
+comenzar
+  AsignarArea(r1,cuadro)
+  AsignarArea(r1,inicio)
+  AsignarArea(r2,cuadro)
+  AsignarArea(r2,inicio)
+  AsignarArea(r3,cuadro)
+  AsignarArea(r3,inicio)
+  AsignarArea(r4,cuadro)
+  AsignarArea(r4,inicio)
+  AsignarArea(jefe,inicio)
+  Iniciar(jefe,1,1)
+  Iniciar(r1,2,1)  
+  Iniciar(r2,3,1)
+  Iniciar(r3,4,1)
+  Iniciar(r4,5,1)
+fin
